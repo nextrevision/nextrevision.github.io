@@ -1,0 +1,37 @@
+name: nextrevision
+description: ramblings and nonsense
+meta_description: "nextrevision, ramblings and nonsense"
+
+aboutPage: false
+
+markdown: redcarpet
+highlighter: pygments
+
+paginate: 10
+baseurl: /
+domain_name: 'http://nextrevision.github.io'
+google_analytics: 'UA-68621030-1'
+
+# Details for the RSS feed generator
+url:            'http://nextrevision.github.io'
+author:         'nextrevision'
+authorTwitter:  'next_revision'
+
+permalink:       /:year/:title/
+
+defaults:
+  - scope:
+      path: "" # empty string for all files
+      type: pages
+    values:
+      layout: default
+  - scope:
+      path: "" # empty string for all files
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: drafts
+    values:
+      layout: post

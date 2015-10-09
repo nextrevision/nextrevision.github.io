@@ -7,9 +7,7 @@ description: Stupid Simple Bash Templating Script
 ## Background
 A few months back, I began working in an environment that was migrating a number of applications to Docker containers. Some of these applications were new, others had existing configuration management code bases to install/manage them. While migrating the installation logic to a Dockerfile, there came the decision of what to do with environment-specific configuration.
 
-Often time, and in numerous examples on how to get started with containers, we are shown how to install some libraries, add some static files, and specify a command to run an application. Slightly more complex examples could detail how to link to other containers by name. Most of the examples I've seen do not include something prevelent in most environments, and that's what to do with environment-specific application data.
-
-Existing configuration management solutions provide hierarchies, data-bags, or other lookup sources to pass application data directly to the CM application, and then render a template based on that data. We employed some of these techniques, but found it a bit frustrating (not to mention time consuming) installing a full CM tool for just handling environment specific configuration. Ideally, we wanted to pass in data to the container at runtime via environment variables (see [http://12factor.net/config](http://12factor.net/config)).
+Existing configuration management solutions provide hierarchies, data-bags, or other lookup sources to pass application data directly to the CM application, and then render a template based on that data. We employed some of these techniques, but left with the feeling that a full on CM tool was unnecessary, bulky, and adding time to our builds. An ideal scenario would be to pass in data to the container at runtime via environment variables (see [http://12factor.net/config](http://12factor.net/config)). This would also allow us to put the burden on the orchestrator, not the container startup and give us flexibility when choosing such tools.
 
 ## Sempl
 

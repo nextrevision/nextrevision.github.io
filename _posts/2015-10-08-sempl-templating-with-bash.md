@@ -49,8 +49,10 @@ This will execute sempl passing in the template file and the desired output file
 
 With all of these files in the same directory, I can run the following commands to build an image from the Dockerfile and run the container with all defaults:
 
-    docker build -t appx .
-    docker run --rm -it -p 8080:80 appx
+{% highlight bash %}
+docker build -t appx .
+docker run --rm -it -p 8080:80 appx
+{% endhighlight %}
 
 Now if I browse to [http://localhost:8080](http://localhost:8080), or the IP of the docker host the container is running on, I should see our application running with all the defaults:
 
@@ -58,10 +60,12 @@ Now if I browse to [http://localhost:8080](http://localhost:8080), or the IP of 
 
 Now that we know our application and template are working as expected with all default values, lets tweak the runtime rendering by passing in a custom ```HEADING``` and ```REGION``` via environment variables.
 
-    docker run --rm -it -p 8080:80 \
-      -e 'HEADING=Guten Tag!' \
-      -e 'REGION=eu-west-1' \
-      appx
+{% highlight bash %}
+docker run --rm -it -p 8080:80 \
+  -e 'HEADING=Guten Tag!' \
+  -e 'REGION=eu-west-1' \
+  appx
+{% endhighlight %}
 
 We should get the following:
 
@@ -69,11 +73,13 @@ We should get the following:
 
 Now lets test the debugging condition in our template by setting that environment variable:
 
-    docker run --rm -it -p 8080:80 \
-      -e 'HEADING=Guten Tag!' \
-      -e 'REGION=eu-west-1' \
-      -e 'DEBUG=1' \
-      appx
+{% highlight bash %}
+docker run --rm -it -p 8080:80 \
+  -e 'HEADING=Guten Tag!' \
+  -e 'REGION=eu-west-1' \
+  -e 'DEBUG=1' \
+  appx
+{% endhighlight %}
 
 ![AppX Defaults](/assets/images/2015-10-08-appx-debug.png)
 

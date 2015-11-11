@@ -53,7 +53,11 @@ vagrant ssh
 This logs us into the host VM running docker. Now lets launch our container running OPS:
 
 {% highlight bash %}
-docker run -d --privileged --volume /tmp:/tmp --volume /dev/log:/dev/log --volume /sys/fs/cgroup:/sys/fs/cgroup --name ops openswitch/genericx86-64 /sbin/init
+docker run -d --privileged --name ops \
+  --volume /tmp:/tmp \
+  --volume /dev/log:/dev/log \
+  --volume /sys/fs/cgroup:/sys/fs/cgroup \
+  openswitch/genericx86-64 /sbin/init
 {% endhighlight %}
 
 We can then login with the following command:

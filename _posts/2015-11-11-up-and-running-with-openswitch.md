@@ -21,13 +21,13 @@ First, download the [supporting Vagrant files](https://archive.openswitch.net/va
 {% highlight bash %}
 curl -o ops-vagrant.zip https://archive.openswitch.net/vagrant/ops-vagrant.zip
 unzip ops-vagrant.zip
-cd vagrant
+cd vagrant/host
 {% endhighlight %}
 
 Then we need to fix a potential issue with a UID mismatch by overwriting to our own:
 
 {% highlight bash %}
-echo $(id -u) > host/.vagrant/machines/default/virtualbox/creator_uid
+echo $(id -u) > .vagrant/machines/default/virtualbox/creator_uid
 {% endhighlight %}
 
 Next, we will go ahead and boot the Vagrant VM and start the OPS build. You must have Vagrant installed as well as the Vagrant plugin `vagrant-reload`. If you do not already have Vagrant, you can download an installer from their [downloads page](https://www.vagrantup.com/downloads.html). The Vagrantfile also uses [VirtualBox](https://www.virtualbox.org/) as the backend, so ensure you have that installed as well.
@@ -48,6 +48,18 @@ What you will see happening next is the `ubuntu/trusty64` base box importing and
 
 {% highlight bash %}
 vagrant ssh
+{% endhighlight %}
+
+This logs us into the host VM running docker. Now lets launch our container running OPS:
+
+{% highlight bash %}
+docker run -d --privileged --volume /tmp:/tmp --volume /dev/log:/dev/log --volume /sys/fs/cgroup:/sys/fs/cgroup --name ops openswitch/genericx86-64 /sbin/init
+{% endhighlight %}
+
+We can then login with the following command:
+
+{% highlight bash %}
+docker exec -it ops /bin/bash
 {% endhighlight %}
 
 Now that we are logged in, we are presented with a BASH prompt. To access the OPS CLI, we can simply enter:

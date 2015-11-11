@@ -6,9 +6,9 @@ description: Get started with OpenSwitch using Vagrant and Docker
 
 ## An Introduction to OpenSwitch
 
-HP [recently announced](http://www8.hp.com/us/en/hp-news/press-release.html?wireId=1989827) the arrival of [OpenSwitch (OPS)](http://openswitch.net/). OPS is a new addition to the Network Operating System space and runs entirely on top of Linux. The project has open sourced all of their underlying components in a [self-hosted Git repository](http://git.openswitch.net/cgit/), where you can find and clone any of these components directly.
+HP [recently announced](http://www8.hp.com/us/en/hp-news/press-release.html?wireId=1989827) the arrival of [OpenSwitch (OPS)](http://openswitch.net/), a new addition to the Network Operating System space that runs entirely on top of Linux. The project has open sourced all of their underlying components in a [self-hosted Git repository](http://git.openswitch.net/cgit/), where you can find and clone any of these components directly.
 
-There are some philosophic differences from that of competitor [Cumulus Linux](https://cumulusnetworks.com), namely the inclusion of an operator CLI to manage all switch configuration as well as a REST API. Similar, however, to Cumulus, they offer a way to get started with the OS by using [Vagrant](https://www.vagrantup.com).
+There are some philosophical differences from that of competitor [Cumulus Linux](https://cumulusnetworks.com), namely the inclusion of an operator CLI to manage all switch configuration in addition to a REST API. Similar, however, to Cumulus, they offer a way to get started with the OS by using [Vagrant](https://www.vagrantup.com).
 
 For those wanting to dive a bit deeper into the internals of OpenSwitch, I highly recommend watching the following videos from the [ONUG Conference](http://opennetworkingusergroup.com) held recently: [OpenSwitch Architecture](https://vimeo.com/144749345) and [Discussion and Demo](https://vimeo.com/144750531).
 

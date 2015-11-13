@@ -48,7 +48,7 @@ This is a trivial and common use case. Typically I find myself loading in secret
 
 Our `secrets.env` file is fairly straightforward and small. However, what if it was much larger and contained more than just a few variables and functions being set? Or what if there was conditional logic in that file?
 
-We would have to keep track of which variables got set, then work to unset them one by one. bash doesn't come with any aid here to "unsource" a vars file, that is, unset all the variables it would normally set.
+We would have to keep track of which variables got set, then work to unset them one by one. Bash doesn't come with any aid here to "unsource" a vars file, that is, unset all the variables it would normally set.
 
 ## unsource
 

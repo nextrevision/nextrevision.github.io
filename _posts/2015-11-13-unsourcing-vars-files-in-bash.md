@@ -50,7 +50,7 @@ Our `secrets.env` file is fairly straightforward and small. However, what if it 
 
 We would have to keep track of which variables got set, then work to unset them one by one. BASH doesn't come with any aid here to "unsource" a vars file, that is, unset all the variables it would normally set.
 
-## Unsource
+## unsource
 
 I created a small little script to help with just that. It uses a few BASH tricks (namely `env -i`) to compare a blank environment with an environment after a file has been sourced. Then it loops through the variables that were added, and uses `unset` to clear them of any values.
 

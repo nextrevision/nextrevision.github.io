@@ -6,9 +6,12 @@ description: Use BASH to unset variables in a given vars file
 
 ## The Problem
 
-BASH has a nifty builtin for loading variables into the current environment, however, there really doesn't exist much in the way of clearing all variables set in a file. To paint a picture, take the following vars file (secrets.env):
+BASH has a nifty builtin for loading variables into the current environment, however, there really doesn't exist much in the way of clearing all variables set in a file. To paint a picture, take the following vars file (`secrets.env`):
 
 {% highlight bash %}
+hello () {
+  echo "world"
+}
 mysecretvar=p@ssword
 anothersecretvar=supersecret
 {% endhighlight %}
@@ -22,6 +25,8 @@ $ source secrets.env
 Now we have access to those variables in our environment:
 
 {% highlight bash %}
+$ hello
+world
 $ echo $mysecretvar
 p@ssword
 $ echo $anothersecretvar
@@ -31,14 +36,17 @@ supersecret
 These variables can be `unset`, or erased, using a BASH builtin as well:
 
 {% highlight bash %}
+$ unset hello
 $ unset $mysecretvar
+$ hello
+bash: hello: command not found
 $ echo $mysecretvar
 
 {% endhighlight %}
 
 This is a trivial and common use case. Typically I find myself loading in secrets to the BASH environment and then using those secrets to launch an app, script or container. When I'm done executing, I don't want those variables still present in my environment.
 
-Our `secrets.env` file is fairly straightforward and small. However, what if it was much larger and contained more than just two variables being set? Or what if there was conditional logic in that file?
+Our `secrets.env` file is fairly straightforward and small. However, what if it was much larger and contained more than just a few variables and functions being set? Or what if there was conditional logic in that file?
 
 We would have to keep track of which variables got set, then work to unset them one by one. BASH doesn't come with any aid here to "unsource" a vars file, that is, unset all the variables it would normally set.
 
@@ -54,6 +62,7 @@ Using our previous example with `secrets.env`, lets see the script in action:
 $ echo $mysecretvar
 p@ssword
 $ source unsource.sh secrets.env
+Cleared: hello
 Cleared: mysecretvar
 Cleared: anothersecretvar
 $ echo $mysecretvar
@@ -72,7 +81,6 @@ $ alias unsource="source /path/to/unsource.sh"
 
 Now we can easily just type in `unsource`. Take it one step further and add it to your `~/.bash_profile` to have it persist between sessions.
 
-## Known limitations
+## Contributions
 
-1. Loading current environment variables/functions in to the sourced file at comparison time. Really only comes into play when referencing functions from other files or needing access to the parent's environment vars.
-2. Does not unsource BASH functions.
+Feel free to comment on the [gist](https://gist.github.com/nextrevision/3f1583eea12017f0838f)!

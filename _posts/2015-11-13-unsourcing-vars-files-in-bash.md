@@ -27,7 +27,8 @@ Now we have access to those variables in our environment:
 
 {% highlight bash %}
 $ list_secrets
-world
+p@ssword
+supersecret
 $ echo $mysecretvar
 p@ssword
 $ echo $anothersecretvar

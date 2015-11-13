@@ -9,8 +9,9 @@ description: Use bash to unset variables in a given vars file
 Bash has a nifty builtin for loading variables into the current environment, however, there really doesn't exist much in the way of clearing all variables set in a file. To paint a picture, take the following vars file (`secrets.env`):
 
 {% highlight bash %}
-hello () {
-  echo "world"
+list_secrets () {
+  echo $mysecretvar
+  echo $anothersecretvar
 }
 mysecretvar=p@ssword
 anothersecretvar=supersecret
@@ -25,7 +26,7 @@ $ source secrets.env
 Now we have access to those variables in our environment:
 
 {% highlight bash %}
-$ hello
+$ list_secrets
 world
 $ echo $mysecretvar
 p@ssword
@@ -36,10 +37,10 @@ supersecret
 These variables can be `unset`, or erased, using a bash builtin as well:
 
 {% highlight bash %}
-$ unset hello
+$ unset list_secrets
 $ unset $mysecretvar
-$ hello
-bash: hello: command not found
+$ list_secrets
+bash: list_secrets: command not found
 $ echo $mysecretvar
 
 {% endhighlight %}
@@ -62,7 +63,7 @@ Using our previous example with `secrets.env`, lets see the script in action:
 $ echo $mysecretvar
 p@ssword
 $ source unsource.sh secrets.env
-Cleared: hello
+Cleared: list_secrets
 Cleared: mysecretvar
 Cleared: anothersecretvar
 $ echo $mysecretvar
@@ -79,7 +80,13 @@ Let's optimize our process a little bit. Typing in `source unsource.sh <varsfile
 $ alias unsource="source /path/to/unsource.sh"
 {% endhighlight %}
 
-Now we can easily just type in `unsource`. Take it one step further and add it to your `~/.bash_profile` to have it persist between sessions.
+Now we can easily just type in the following to unsource our `secrets.env` file:
+
+{% highlight bash %}
+$ unsource secrets.env
+{% endhighlight %}
+
+Take it one step further and add it to your `~/.bash_profile` to have it persist between sessions.
 
 ## Contributions
 

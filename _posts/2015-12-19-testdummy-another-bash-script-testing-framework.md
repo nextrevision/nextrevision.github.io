@@ -8,7 +8,7 @@ description: Testdummy is a yet another way to test your bash scripts
 
 There are many reasons why you should be running unit tests, and if you are unfamiliar with the concept, [here](http://martinfowler.com/bliki/UnitTest.html) is a decent summary on some of the history and concepts.
 
-For the most programming languages, there are existing frameworks for testing your code, and the same is certainly true for bash scripts ([bats](https://github.com/sstephenson/bats), [shunit2](https://code.google.com/p/shunit2/), [assert.sh](https://github.com/lehmannro/assert.sh)). Testdummy builds on top of these by wrapping common testing patterns into easy to use components.
+For the most programming languages, there are existing frameworks for testing your code, and the same is certainly true for bash scripts ([bats](https://github.com/sstephenson/bats), [shunit2](https://code.google.com/p/shunit2/), [roundup](https://github.com/bmizerany/roundup), [assert.sh](https://github.com/lehmannro/assert.sh)). Testdummy is largely based on the format and syntax of [roundup](https://github.com/bmizerany/roundup), but provides a few extra features that wrap common testing patterns into easy to use components.
 
 ## Another Take
 

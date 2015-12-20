@@ -8,11 +8,11 @@ description: Testdummy is a yet another way to test your bash scripts
 
 There are many reasons why you should be running unit tests, and if you are unfamiliar with the concept, [here](http://martinfowler.com/bliki/UnitTest.html) is a decent summary on some of the history and concepts.
 
-For most programming languages, frameworks for testing your code exist, and the same is true for bash scripts ([bats](https://github.com/sstephenson/bats), [shunit2](https://code.google.com/p/shunit2/), [assert.sh](https://github.com/lehmannro/assert.sh)). Testdummy builds on top of these by wrapping common testing patterns into easy to use components.
+For the most programming languages, there are existing frameworks for testing your code, and the same is certainly true for bash scripts ([bats](https://github.com/sstephenson/bats), [shunit2](https://code.google.com/p/shunit2/), [assert.sh](https://github.com/lehmannro/assert.sh)). Testdummy builds on top of these by wrapping common testing patterns into easy to use components.
 
 ## Another Take
 
-I wanted to create a library that made reading and writing tests easy to do. Like any other framework, you have to learn how to use the components of the framework. The goal in writing `testdummy` was to make getting started very easy by encapsulating the logic of common testing patterns into helper methods.
+I wanted to create a library that made reading and writing tests easy to do. Like any other framework, you have to learn how to use the components of the framework. The goal in writing `testdummy` was to make getting started very easy by wrapping the logic of common testing patterns into helper methods.
 
 Most of the time, we have a function, or an entire script that we want to execute, check the return code and output. This is the basic pattern you'll find in `testdummy`. For example, if we want to test that running `/bin/false` has an exit code of `1`, a manual test may look like:
 
